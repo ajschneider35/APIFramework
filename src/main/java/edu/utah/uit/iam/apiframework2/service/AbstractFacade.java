@@ -7,6 +7,8 @@ package edu.utah.uit.iam.apiframework2.service;
 
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.transaction.Transactional;
 
 /**
  *
@@ -15,15 +17,22 @@ import javax.persistence.EntityManager;
 public abstract class AbstractFacade<T> {
 
     private Class<T> entityClass;
+    private EntityManager em;
+    private EntityTransaction et;
 
     public AbstractFacade(Class<T> entityClass) {
         this.entityClass = entityClass;
     }
 
     protected abstract EntityManager getEntityManager();
-
+    
     public void create(T entity) {
-        getEntityManager().persist(entity);
+        em = getEntityManager();
+        et = em.getTransaction();
+        
+        et.begin();
+        em.persist(entity);
+        et.commit();
     }
 
     public void edit(T entity) {

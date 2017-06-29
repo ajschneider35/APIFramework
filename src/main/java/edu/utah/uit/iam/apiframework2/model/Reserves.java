@@ -82,7 +82,7 @@ public class Reserves implements Serializable {
     public void setReservesPK(ReservesPK reservesPK) {
         this.reservesPK = reservesPK;
     }
-
+    
     public String getName() {
         return name;
     }

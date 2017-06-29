@@ -6,8 +6,6 @@
 package edu.utah.uit.iam.apiframework2.service;
 
 import edu.utah.uit.iam.apiframework2.model.Teams;
-import java.sql.Connection;
-import java.sql.ResultSet;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -28,7 +26,7 @@ import javax.ws.rs.core.MediaType;
  * @author andrewschneider
  */
 @Stateless
-@Path("edu.utah.uit.iam.apiframework2.teams")
+@Path("teams")
 public class TeamsFacadeREST extends AbstractFacade<Teams> {
     
     @PersistenceContext(unitName = "edu.utah.uit.iam_APIFramework2_war_1.0-SNAPSHOTPU")
